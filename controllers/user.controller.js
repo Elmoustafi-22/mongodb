@@ -3,7 +3,7 @@ const { checkEmail, createUser, validateUser } = require("../services/user.servi
 const createUserHandler = async (req, res, next) => {
     try {
         const usrExist = await checkEmail(req.body.email);
-        if (!usrExist == 0) {
+        if (usrExist == 0) {
             const usr = await createUser(req.body);
             return res
                 .status(202)
